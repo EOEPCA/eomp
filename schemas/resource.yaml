@@ -4,7 +4,7 @@ title: EOEPCA metadata profile
 description: EOEPCA metadata profile
 
 allOf:
-  - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/heads/master/core/openapi/schemas/recordGeoJSON.yaml'
+  - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/tags/1.0.0/core/openapi/schemas/recordGeoJSON.yaml'
   - properties:
       properties:
           type: object
