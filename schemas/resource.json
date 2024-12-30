@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/EOEPCA/metadata-profile/refs/heads/master/resource.yaml",
+  "$id": "https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/tags/1.0.0/core/openapi/schemas/recordGeoJSON.yaml",
   "title": "EOEPCA metadata profile",
   "description": "EOEPCA metadata profile",
   "allOf": [
@@ -67,10 +67,7 @@
                 },
                 "resolution": {
                   "type": "string",
-                  "description": "Minimum time period resolvable in the dataset, as an ISO 8601 duration",
-                  "example": [
-                    "P1D"
-                  ]
+                  "description": "Minimum time period resolvable in the dataset, as an ISO 8601 duration"
                 }
               }
             }
@@ -273,18 +270,18 @@
             }
           ]
         },
+        "conformsTo": {
+          "type": "array",
+          "description": "The extensions/conformance classes used in this record.",
+          "items": {
+            "type": "string"
+          }
+        },
         "properties": {
           "allOf": [
             {
               "type": "object",
               "properties": {
-                "conformsTo": {
-                  "type": "array",
-                  "description": "The extensions/conformance classes used in this record.",
-                  "items": {
-                    "type": "string"
-                  }
-                },
                 "created": {
                   "type": "string",
                   "description": "The date this record was created in the server.",
@@ -378,19 +375,16 @@
                     "properties": {
                       "code": {
                         "type": "string",
-                        "description": "The language tag as per RFC-5646.",
-                        "example": "el"
+                        "description": "The language tag as per RFC-5646."
                       },
                       "name": {
                         "type": "string",
                         "minLength": 1,
-                        "description": "The untranslated name of the language.",
-                        "example": "Ελληνικά"
+                        "description": "The untranslated name of the language."
                       },
                       "alternate": {
                         "type": "string",
-                        "description": "The name of the language in another well-understood language, usually English.",
-                        "example": "Greek"
+                        "description": "The name of the language in another well-understood language, usually English."
                       },
                       "dir": {
                         "type": "string",
@@ -499,36 +493,7 @@
                         "description": "Graphic identifying a contact. The link relation should be `icon` and the media type should be an image media type.",
                         "allOf": [
                           {
-                            "type": "object",
-                            "required": [
-                              "href",
-                              "rel"
-                            ],
-                            "properties": {
-                              "href": {
-                                "type": "string",
-                                "example": "http://data.example.com/buildings/123"
-                              },
-                              "rel": {
-                                "type": "string",
-                                "example": "alternate"
-                              },
-                              "type": {
-                                "type": "string",
-                                "example": "application/geo+json"
-                              },
-                              "hreflang": {
-                                "type": "string",
-                                "example": "en"
-                              },
-                              "title": {
-                                "type": "string",
-                                "example": "Trierer Strasse 70, 53115 Bonn"
-                              },
-                              "length": {
-                                "type": "integer"
-                              }
-                            }
+                            "$ref": "#/allOf/0/properties/links/items"
                           },
                           {
                             "type": "object",
@@ -558,8 +523,7 @@
                             "value": {
                               "type": "string",
                               "description": "The value is the phone number itself.",
-                              "pattern": "^\\+[1-9]{1}[0-9]{3,14}$",
-                              "example": "+14165550142"
+                              "pattern": "^\\+[1-9]{1}[0-9]{3,14}$"
                             },
                             "roles": {
                               "description": "The type of phone number (e.g. home, work, fax, etc.).",
@@ -631,7 +595,7 @@
                         "items": {
                           "allOf": [
                             {
-                              "$ref": "#/allOf/0/properties/properties/allOf/0/properties/contacts/items/properties/logo/allOf/0"
+                              "$ref": "#/allOf/0/properties/links/items"
                             },
                             {
                               "type": "object",
@@ -644,8 +608,7 @@
                       },
                       "hoursOfService": {
                         "type": "string",
-                        "description": "Time period when the contact can be contacted.",
-                        "example": "Hours: Mo-Fr 10am-7pm Sa 10am-22pm Su 10am-21pm"
+                        "description": "Time period when the contact can be contacted."
                       },
                       "contactInstructions": {
                         "type": "string",
@@ -681,41 +644,54 @@
           "type": "array",
           "items": {
             "type": "object",
-            "properties": {
-              "rel": {
-                "type": "string",
-                "description": "The type or semantics of the relation.",
-                "example": "alternate"
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "rel": {
+                    "type": "string",
+                    "description": "The type or semantics of the relation."
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "A hint indicating what the media type of the result of dereferencing the link should be."
+                  },
+                  "hreflang": {
+                    "type": "string",
+                    "description": "A hint indicating what the language of the result of dereferencing the link should be."
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Used to label the destination of a link such that it can be used as a human-readable identifier."
+                  },
+                  "length": {
+                    "type": "integer"
+                  },
+                  "created": {
+                    "type": "string",
+                    "description": "Date of creation of the resource pointed to by the link.",
+                    "format": "date-time"
+                  },
+                  "updated": {
+                    "type": "string",
+                    "description": "Most recent date on which the resource pointed to by the link was changed.",
+                    "format": "date-time"
+                  }
+                }
               },
-              "type": {
-                "type": "string",
-                "description": "A hint indicating what the media type of the result of dereferencing the link should be.",
-                "example": "application/geo+json"
-              },
-              "hreflang": {
-                "type": "string",
-                "description": "A hint indicating what the language of the result of dereferencing the link should be.",
-                "example": "en"
-              },
-              "title": {
-                "type": "string",
-                "description": "Used to label the destination of a link such that it can be used as a human-readable identifier.",
-                "example": "Trierer Strasse 70, 53115 Bonn"
-              },
-              "length": {
-                "type": "integer"
-              },
-              "created": {
-                "type": "string",
-                "description": "Date of creation of the resource pointed to by the link.",
-                "format": "date-time"
-              },
-              "updated": {
-                "type": "string",
-                "description": "Most recent date on which the resource pointed to by the link was changed.",
-                "format": "date-time"
+              {
+                "type": "object",
+                "required": [
+                  "href"
+                ],
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                }
               }
-            }
+            ]
           }
         },
         "linkTemplates": {
@@ -723,7 +699,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "#/allOf/0/properties/links/items"
+                "$ref": "#/allOf/0/properties/links/items/allOf/0"
               },
               {
                 "type": "object",
@@ -733,13 +709,12 @@
                 "properties": {
                   "uriTemplate": {
                     "type": "string",
-                    "description": "Supplies a resolvable URI to a remote resource (or resource fragment).",
-                    "example": "http://data.example.com/buildings/(building-id}"
+                    "description": "Supplies a resolvable URI to a remote resource (or resource fragment)."
                   },
                   "varBase": {
                     "type": "string",
                     "description": "The base URI to which the variable name can be appended to retrieve the definition of the variable as a JSON Schema fragment.",
-                    "format": "url"
+                    "format": "uri"
                   },
                   "variables": {
                     "type": "object",
