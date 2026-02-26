@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/EOEPCA/metadata-profile/refs/heads/master/schemas/resource.json",
+  "$id": "https://raw.githubusercontent.com/EOEPCA/metadata-profile/refs/heads/master/schemas/resource.yaml",
   "title": "EOEPCA metadata profile",
   "description": "EOEPCA metadata profile",
   "allOf": [
@@ -728,7 +728,14 @@
       }
     },
     {
+      "type": "object",
       "properties": {
+        "conformsTo": {
+          "type": "array",
+          "contains": {
+            "const": "http://eoepca.org/spec/eomp/1/conf/core"
+          }
+        },
         "properties": {
           "type": "object",
           "properties": {
@@ -742,9 +749,15 @@
                 "workflow"
               ]
             }
-          }
+          },
+          "required": [
+            "type"
+          ]
         }
-      }
+      },
+      "required": [
+        "links"
+      ]
     }
   ]
 }

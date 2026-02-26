@@ -5,7 +5,12 @@ description: EOEPCA metadata profile
 
 allOf:
   - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/tags/1.0.0/core/openapi/schemas/recordGeoJSON.yaml'
-  - properties:
+  - type: object
+    properties:
+      conformsTo:
+        type: array
+        contains:
+          const: http://eoepca.org/spec/eomp/1/conf/core
       properties:
           type: object
           properties:
@@ -17,3 +22,7 @@ allOf:
                       - service
                       - process
                       - workflow
+          required:
+              - type
+    required:
+        - links

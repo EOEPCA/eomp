@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.12"]
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v6
       name: Setup Python ${{ matrix.python-version }}
       with:
         python-version: ${{ matrix.python-version }}
@@ -26,7 +26,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         pip3 install check-jsonschema
-#    - name: Run JSON Schema validation
-#      run: |
-#        check-jsonschema --check-metaschema schemas/resource.json
-#        for e in examples/*.json; do check-jsonschema --schemafile schemas/resource.json $e; done
+    - name: Run JSON Schema validation
+      run: |
+        check-jsonschema --check-metaschema schemas/eomp-bundled.json
+        for e in examples/*.json; do check-jsonschema --schemafile schemas/eomp-bundled.json $e; done
