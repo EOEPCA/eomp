@@ -1,5 +1,5 @@
 $schema: 'https://json-schema.org/draft/2020-12/schema'
-$id: 'https://raw.githubusercontent.com/EOEPCA/metadata-profile/refs/heads/master/schemas/resource.yaml'
+$id: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/resourceRecordGeoJSON.yaml'
 title: EOEPCA metadata profile
 description: EOEPCA metadata profile
 

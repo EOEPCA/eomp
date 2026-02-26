@@ -29,8 +29,8 @@ An EOMP record conforms to the Requirements Class "Record Core (Common Component
 
 ## Schemas and examples
 
-The authoritative EOMP schema can be found in https://github.com/EOEPCA/metadata-profile/blob/master/schemas/resource.json
+The authoritative EOMP schema can be found in https://github.com/EOEPCA/eomp/blob/master/schemas/eomp-bundled.json
 
 ## Collaboration and development
 
-The EOMP is developed in the open on [GitHub](https://github.com/EOEPCA/metadata-profile) which contains the schemas, examples and document definition.  In addition, all issues (bugs, feature requests) and contributions can be provided via the GitHub repository.
+The EOMP is developed in the open on [GitHub](https://github.com/EOEPCA/eomp) which contains the schemas, examples and document definition.  In addition, all issues (bugs, feature requests) and contributions can be provided via the GitHub repository.
