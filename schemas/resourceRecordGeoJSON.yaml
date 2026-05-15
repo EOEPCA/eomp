@@ -21,7 +21,6 @@ allOf:
                       - dataset
                       - service
                       - process
-                      - workflow
           required:
               - type
     required:

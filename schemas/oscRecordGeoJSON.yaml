@@ -1,0 +1,90 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+$id: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/oscRecordGeoJSON.yaml'
+title: ESA Open Science Catalogue metadata
+description: ESA Open Science Catalogue metadata
+
+allOf:
+  - $ref: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/resourceRecordGeoJSON.yaml'
+  - type: object
+    properties:
+      conformsTo:
+        type: array
+        contains:
+          const: http://esa.int/spec/osc/1/conf/core
+      properties:
+          type: object
+          properties:
+              type:
+                  type: string
+                  description: OSC resource type
+                  enum:
+                      - dataset
+                      - experiment
+                      - service
+                      - process
+                      - workflow
+              osc:
+                  type: object
+                  description: ESA Open Science Catalog definition
+                  properties:
+                      product:
+                          type: string
+                          description: product name
+                      project:
+                          type: string
+                          description: project name
+                      workflow:
+                          type: string
+                          description: workflow name
+                  required:
+                      - product
+                      - project
+                      - workflow
+              application:
+                  type: object
+                  properties:
+                      type:
+                          type: string
+                          description: application type
+                          enum:
+                              - jupyter-notebook
+                      container:
+                          type: array
+                          description: whether application is containerized
+                          minItems: 1
+                          items:
+                              type: boolean
+                      language:
+                          type: array
+                          description: application programming language
+                          minItems: 1
+                          items:
+                              type: string
+                              enum:
+                                  - Python
+                      jupyter_kernel_info:
+                          type: object
+                          description: Jupyter kernel definition
+                          properties:
+                              name:
+                                  type: string
+                                  description: name
+                              python_version:
+                                  type: string
+                                  description: Python version
+                              env_file:
+                                  type: string
+                                  description: path to environment file
+
+                  allOf:
+                      - if:
+                            properties:
+                                type:
+                                    const: jupyter-notebook
+                        then:
+                            required:
+                                - jupyter_kernel_info
+
+          required:
+              - type
+              - osc
