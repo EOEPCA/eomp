@@ -768,6 +768,63 @@
       ]
     },
     {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "https://stac-extensions.github.io/osc/v1.0.0/schema.json#",
+      "title": "Open Science Catalog Extension",
+      "description": "STAC Open Science Catalog Extension for STAC Items and STAC Collections.",
+      "type": "object",
+      "required": [
+        "stac_extensions"
+      ],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://stac-extensions.github.io/osc/v1.0.0/schema.json"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "$comment": "This is the schema for STAC Items.",
+          "type": "object",
+          "required": [
+            "type",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "$ref": "#/definitions/Schema_Fields"
+            }
+          }
+        },
+        {
+          "$comment": "This is the schema for STAC Catalogs & Collections.",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "Catalog",
+                "Collection"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/Schema_Fields"
+            }
+          ]
+        }
+      ],
+      "definitions": {}
+    },
+    {
       "type": "object",
       "properties": {
         "conformsTo": {
@@ -775,116 +832,114 @@
           "contains": {
             "const": "http://esa.int/spec/osc/1/conf/core"
           }
-        },
-        "properties": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "description": "EOEPCA resource type",
-              "enum": [
-                "dataset",
-                "experiment",
-                "service",
-                "process",
-                "workflow"
-              ]
-            },
-            "osc": {
-              "type": "object",
-              "description": "ESA Open Science Catalog definition",
-              "properties": {
-                "product": {
-                  "type": "string",
-                  "description": "product name"
-                },
-                "project": {
-                  "type": "string",
-                  "description": "project name"
-                },
-                "workflow": {
-                  "type": "string",
-                  "description": "workflow name"
-                }
-              },
-              "required": [
-                "product",
-                "project",
-                "workflow"
-              ]
-            },
-            "application": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "description": "application type",
-                  "enum": [
-                    "jupyter-notebook"
-                  ]
-                },
-                "container": {
-                  "type": "array",
-                  "description": "whether application is containerized",
-                  "minItems": 1,
-                  "items": {
-                    "type": "boolean"
-                  }
-                },
-                "language": {
-                  "type": "array",
-                  "description": "application programming language",
-                  "minItems": 1,
-                  "items": {
-                    "type": "string",
-                    "enum": [
-                      "Python"
-                    ]
-                  }
-                },
-                "jupyter_kernel_info": {
-                  "type": "object",
-                  "description": "Jupyter kernel definition",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "description": "name"
-                    },
-                    "python_version": {
-                      "type": "string",
-                      "description": "Python version"
-                    },
-                    "env_file": {
-                      "type": "string",
-                      "description": "path to environment file"
-                    }
-                  }
-                }
-              },
-              "allOf": [
-                {
-                  "if": {
-                    "properties": {
-                      "type": {
-                        "const": "jupyter-notebook"
-                      }
-                    }
-                  },
-                  "then": {
-                    "required": [
-                      "jupyter_kernel_info"
-                    ]
-                  }
-                }
-              ]
-            }
-          },
-          "required": [
-            "type",
-            "osc"
-          ]
         }
       }
     }
-  ]
+  ],
+  "definitions": {
+    "Schema_Fields": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Schema_Product_fields"
+        },
+        {
+          "$ref": "#/definitions/Schema_Project_fields"
+        }
+      ]
+    },
+    "Schema_Missions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "Schema_Product_fields": {
+      "type": "object",
+      "required": [
+        "osc:type",
+        "osc:status",
+        "osc:project"
+      ],
+      "properties": {
+        "osc:type": {
+          "type": "string",
+          "const": "product"
+        },
+        "osc:status": {
+          "$ref": "#/definitions/Schema_Status"
+        },
+        "osc:project": {
+          "$ref": "#/definitions/Schema_Project"
+        },
+        "osc:region": {
+          "$ref": "#/definitions/Schema_Region"
+        },
+        "osc:variables": {
+          "$ref": "#/definitions/Schema.variables"
+        },
+        "osc:missions": {
+          "$ref": "#/definitions/Schema_Missions"
+        },
+        "osc:experiment": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "patternProperties": {
+        "^(?!osc:)": {}
+      },
+      "additionalProperties": false
+    },
+    "Schema_Project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Schema_Project_fields": {
+      "type": "object",
+      "required": [
+        "osc:type",
+        "osc:status"
+      ],
+      "properties": {
+        "osc:type": {
+          "type": "string",
+          "const": "project"
+        },
+        "osc:status": {
+          "$ref": "#/definitions/Schema_Status"
+        },
+        "osc:workflows": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "patternProperties": {
+        "^(?!osc:)": {}
+      },
+      "additionalProperties": false
+    },
+    "Schema_Region": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Schema_Status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "ongoing",
+        "completed"
+      ]
+    },
+    "Schema.variables": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
 }

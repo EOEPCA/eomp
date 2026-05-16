@@ -5,6 +5,7 @@ description: EOEPCA metadata profile
 
 allOf:
   - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/tags/1.0.0/core/openapi/schemas/recordGeoJSON.yaml'
+  - $ref: 'https://raw.githubusercontent.com/stac-extensions/application/refs/heads/main/json-schema/schema.json'
   - type: object
     properties:
       conformsTo:
@@ -19,8 +20,10 @@ allOf:
                   description: EOEPCA resource type
                   enum:
                       - dataset
+                      - experiment
                       - service
                       - process
+                      - workflow
           required:
               - type
     required:
