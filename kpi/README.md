@@ -53,7 +53,7 @@ The title should be as specific as possible. For example, if the resource contai
 |The words in title are represented in "Sentence case"|1|
 |The title contains fewer than 3 acronyms (words with all uppercase letters)|1|
 |The title passes a basic spellcheck|1|
-|===
+
 
 *Total possible score: 6 (100%)*
 
@@ -79,8 +79,8 @@ The description should provide a clear and concise statement that enables the re
 
 ##### Spell-checking recommendations
 
-* Dictionary by Merriam-Webster: America's most-trusted online dictionaryfootnote:[https://www.merriam-webster.com]
-* Cambridge Dictionary | English Dictionary, Translations & Thesaurusfootnote:[https://dictionary.cambridge.org]
+* Dictionary by Merriam-Webster: [America's most-trusted online dictionary](https://www.merriam-webster.com)
+* Cambridge Dictionary: [English Dictionary, Translations & Thesaurus](https://dictionary.cambridge.org)
 
 #### Rules
 
@@ -104,7 +104,7 @@ A graphic overview of a resource provides the user with a high-level preview, wh
 
 #### Measurement
 
-The presence of a `preview` link is checked to ensure that it contains a URL to a common web image file type.footnote:[https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#Common_image_file_types]
+The presence of a `preview` link is checked to ensure that it contains a URL to a [common web image file type](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#Common_image_file_types]).
 
 #### Guidance
 
@@ -113,6 +113,7 @@ In addition to the presence of the graphic overview image it is also valuable to
 #### Rules
 
 |Rule|Score|
+|---|---|
 |A graphic overview element is present|1|
 |A graphic overview URL resolves successfully|1|
 |A graphic overview URL content is a common web image file type (check MIME type, content header/magic number)|1|
@@ -126,9 +127,9 @@ In addition to the presence of the graphic overview image it is also valuable to
 All properties with linked information (URLs).
 
 * `links[*].href`
-* `+properties.themes[*].concepts[*].url+`
+* `properties.themes[*].concepts[*].url`
 * `properties.themes[*].scheme`
-* `+properties.contacts[*].links[*].href+`
+* `properties.contacts[*].links[*].href`
 
 #### Rationale for measurement
 
@@ -149,6 +150,7 @@ Ensure that all links resolve and are accessible via HTTPS.
 #### Rules
 
 |Rule|Score|
+|---|---|
 |Link resolves successfully|1|
 |Link has a valid media type|1|
 
