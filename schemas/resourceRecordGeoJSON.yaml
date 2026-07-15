@@ -5,7 +5,7 @@ description: EOEPCA metadata profile
 
 allOf:
   - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/tags/1.0.0/core/openapi/schemas/recordGeoJSON.yaml'
-  - $ref: 'https://raw.githubusercontent.com/stac-extensions/application/refs/heads/main/json-schema/schema.json'
+#  - $ref: 'https://raw.githubusercontent.com/stac-extensions/application/refs/heads/main/json-schema/schema.json'
   - type: object
     properties:
       conformsTo:
@@ -24,7 +24,13 @@ allOf:
                       - service
                       - process
                       - workflow
+              title:
+                  $ref: 'https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/recordCommonProperties.yaml#/properties/title'
+              created:
+                  $ref: 'https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/recordCommonProperties.yaml#/properties/created'
           required:
               - type
+              - title
+              - created
     required:
         - links
