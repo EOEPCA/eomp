@@ -67,7 +67,7 @@ The title should be as specific as possible. For example, if the resource contai
 
 The description facilitates understanding and discovery and is a key element of metadata information displayed in search results. Extensive and meaningful descriptive information enables users to both understand and properly evaluate a metadata record and its respective resource in support of data access, visualization and exploitation.
 
-A EOMP resource's title and description are the two most relevant elements in the record.
+An EOMP resource's title and description are the two most relevant elements in the record.
 
 #### Measurement
 
