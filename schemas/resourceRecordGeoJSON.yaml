@@ -14,7 +14,6 @@ allOf:
       stac_extensions:
         type: array
         description: A list of implemented STAC Extensions. The list consists of URLs to JSON Schema files that can be used for validation
-        minItems: 1
         uniqueItems: true
         items:
            type: string
@@ -41,4 +40,5 @@ allOf:
               - title
               - created
     required:
+        - stac_extensions
         - links

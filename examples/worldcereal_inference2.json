@@ -4,6 +4,7 @@
   "conformsTo": [
     "http://eoepca.org/spec/eomp/1/conf/core"
   ],
+  "stac_extensions": [],
   "geometry": null,
   "properties": {
     "created": "2024-05-17T00:00:00Z",
