@@ -19,8 +19,8 @@ An EOMP record conforms to the Requirements Class "Record Core (Common Component
 |Property|Requirement|Type|Description|
 |---|---|---|---|
 |`id`|**Required**|string|A unique identifier for the record.  This value MAY be a UUID.|
-|`conformsTo`|**Required**|[array]|The version of EOMP (URI) to which the record conforms, fixed to `http://eoepca.org/spec/eomp/1/conf/core`|
-|`stac_extensions`|Optional|[array]|A list of implemented STAC Extensions. The list consists of URLs to JSON Schema files that can be used for validation|
+|`conformsTo`|**Required**|[string]|The version of EOMP (URI) to which the record conforms, fixed to `http://eoepca.org/spec/eomp/1/conf/core`|
+|`stac_extensions`|Optional|[string]|A list of implemented STAC Extensions. The list consists of URLs to JSON Schema files that can be used for validation|
 |`geometry`|**Required**|GeoJSON geometry object or `null`|GeoJSON geometry of the record, or `null` if it cannot be derived/calculated, or chosen not to be provided|
 |`properties`|**Required**|[Properties object](#properties-object)|Attributes of the record|
 |`links`|**Required**|[Link object](#link-object)|Online linkages in support of data retrieval or additional informational resources|
