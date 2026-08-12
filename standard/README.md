@@ -29,6 +29,7 @@ An EOMP record conforms to the Requirements Class "Record Core (Common Component
 
 |Property|Requirement|Type|Description|
 |---|---|---|---|
+|`type`|**Required**|string|The resource type of the record.  One of `dataset`, `experiment`, `service`, `process`, `workflow`
 |`title`|**Required**|string|A human-readable name of the resource
 |`created`|**Required**|string|The date that the EOMP record was created
 
