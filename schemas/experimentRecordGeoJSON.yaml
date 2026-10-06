@@ -4,7 +4,7 @@ title: EOEPCA metadata profile - experiment extension
 description: EOEPCA metadata profile - experiment extension
 
 allOf:
-  - $ref: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/resourceRecordGeoJSON.yaml'
+  - $ref: 'resourceRecordGeoJSON.yaml'
   - type: object
     properties:
       conformsTo:
