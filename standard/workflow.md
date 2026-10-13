@@ -17,7 +17,7 @@ An EOMP workflow record conforms to the [EOMP definition](https://github.com/EOE
 |Property|Requirement|Type|Description|
 |---|---|---|---|
 |`conformsTo`|**Required**|[string]|The version of EOMP workflow extension (URI) to which the record conforms, fixed to `http://eoepca.org/spec/eomp/1/conf/workflow`|
-|`stac_extensions`|Optional|[string]|A list of implemented STAC Extensions. This list must include the STAC application extension (https://stac-extensions.github.io/application/v0.1.0/schema.json)|
+|`stac_extensions`|**Required**|[string]|A list of implemented STAC Extensions. This list must include the STAC application extension (https://stac-extensions.github.io/application/v0.1.0/schema.json)|
 
 ## Properties object
 

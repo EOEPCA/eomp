@@ -2,7 +2,8 @@
     "id": "worldcereal_inference",
     "type": "Feature",
     "conformsTo": [
-        "http://eoepca.org/spec/eomp/1/conf/core"
+        "http://eoepca.org/spec/eomp/1/conf/core",
+        "http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/record-core"
     ],
     "stac_extensions": [],
     "geometry": null,

@@ -34,7 +34,7 @@ An EOMP - experiment record requires the following link definitions in the `link
 
 - one or more links with a `rel=input` link relation
 - one or more links with a `rel=environment` link relation
-- one or more links with a `rel=workflow` link relation
+- one link with a `rel=workflow` link relation
 
 ## Schemas and examples
 

@@ -1,5 +1,4 @@
 $schema: 'https://json-schema.org/draft/2020-12/schema'
-$id: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/workflowRecordGeoJSON.yaml'
 title: EOEPCA metadata profile - workflow extension
 description: EOEPCA metadata profile - workflow extension
 
@@ -9,8 +8,11 @@ allOf:
     properties:
       conformsTo:
         type: array
-        contains:
-          const: http://eoepca.org/spec/eomp/1/conf/workflow
+        allOf:
+          - contains:
+              const: http://eoepca.org/spec/eomp/1/conf/workflow
+          - contains:
+              const: http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/record-core
       stac_extensions:
         type: array
         description: A list of implemented STAC Extensions. The list consists of URLs to JSON Schema files that can be used for validation

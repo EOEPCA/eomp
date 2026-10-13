@@ -9,20 +9,39 @@ in YAML.
 [Stoplight Studio](https://stoplight.io/studio) (free and open source) is a full GUI environment (web-based
 or desktop) for designing schemas, models and APIs (JSON/YAML/OpenAPI).
 
-To generate the EOMP JSON schema, following these steps:
+To generate the EOMP JSON schema, following these steps for each `.yaml` file:
 
+### Generate an all in one YAML bundle
 - open Stoplight Studio
 - click "Open Existing Folder"
 - point to the `schemas/` directory
 - ensure schema has no errors ("0 Issues" in the top right pane)
 - click "Open"
-- on the right hand pane, right-click the file `resourceRecordGeoJSON.yaml` and select "Export"
+- on the right hand pane, right-click the file and select "Export"
+- select the following from the dialogue box:
+  - Format: YAML
+  - References: Dereferened
+  - X-Extensions: unchecked
+- click "Save to file"
+- save file to `schemas/eomp-<class>-bundled.yaml`
+- **DO NOT commit this file**
+
+Note that this step is required as an intermediary to generate an all in one YAML bundle in order
+for downstream schemas to reference properly.
+
+### Generate an all in one JSON bundle
+- open Stoplight Studio
+- click "Open Existing Folder"
+- point to the `schemas/` directory
+- ensure schema has no errors ("0 Issues" in the top right pane)
+- click "Open"
+- on the right hand pane, right-click the bundled YAML file and select "Export"
 - select the following from the dialogue box:
   - Format: JSON
   - References: Dereferened
   - X-Extensions: unchecked
 - click "Save to file"
-- save file to `schemas/eomp-bundled.json`
+- save file to `schemas/eomp-<class>-bundled.json`
 - commit changes
 
 A screenshot is shown below:
@@ -31,6 +50,9 @@ A screenshot is shown below:
 
 Note: the above are manual steps to verify and generate the JSON Schema bundle.  Future updates will
 include automated workflow via GitHub Actions.
+
+### Replace/fix null definitions:
+
 
 ## Validating an EOMP record
 

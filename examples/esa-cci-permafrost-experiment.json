@@ -3,7 +3,9 @@
     "title": "ESA CCI permafrost",
     "type": "Feature",
     "conformsTo": [
-        "http://eoepca.org/spec/eomp/1/conf/core"
+        "http://eoepca.org/spec/eomp/1/conf/core",
+        "http://eoepca.org/spec/eomp/1/conf/experiment",
+        "http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/record-core"
     ],
     "stac_extensions": [
         "https://stac-extensions.github.io/application/v0.1.0/schema.json"

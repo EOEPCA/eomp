@@ -1,16 +1,18 @@
 $schema: 'https://json-schema.org/draft/2020-12/schema'
-$id: 'https://raw.githubusercontent.com/EOEPCA/eomp/refs/heads/master/schemas/resourceRecordGeoJSON.yaml'
 title: EOEPCA metadata profile
 description: EOEPCA metadata profile
 
 allOf:
-  - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/heads/issue-518/core/openapi/schemas/recordGeoJSON.yaml'
+  - $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/heads/master/core/openapi/schemas/recordGeoJSON.yaml'
   - type: object
     properties:
       conformsTo:
         type: array
-        contains:
-          const: http://eoepca.org/spec/eomp/1/conf/core
+        allOf:
+          - contains:
+              const: http://eoepca.org/spec/eomp/1/conf/core
+          - contains:
+              const: http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/record-core
       stac_extensions:
         type: array
         description: A list of implemented STAC Extensions. The list consists of URLs to JSON Schema files that can be used for validation
@@ -32,9 +34,9 @@ allOf:
                       - process
                       - workflow
               title:
-                  $ref: 'https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/recordCommonProperties.yaml#/properties/title'
+                  $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/heads/master/core/openapi/schemas/recordCommonProperties.yaml#/properties/title'
               created:
-                  $ref: 'https://schemas.opengis.net/ogcapi/records/part1/1.0/openapi/schemas/recordCommonProperties.yaml#/properties/created'
+                  $ref: 'https://raw.githubusercontent.com/opengeospatial/ogcapi-records/refs/heads/master/core/openapi/schemas/recordCommonProperties.yaml#/properties/created'
           required:
               - type
               - title
