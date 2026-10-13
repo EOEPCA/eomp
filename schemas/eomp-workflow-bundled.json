@@ -85,9 +85,8 @@
             "time": {
               "oneOf": [
                 {
-                  "enum": [
-                      null
-                  ]
+                  "type": "object",
+                  "nullable": true
                 },
                 {
                   "nullable": true,
@@ -135,9 +134,8 @@
             "geometry": {
               "oneOf": [
                 {
-                  "enum": [
-                      null
-                  ]
+                  "type": "object",
+                  "nullable": true
                 },
                 {
                   "oneOf": [
@@ -320,7 +318,7 @@
                         "geometries": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/geometry/oneOf/1"
+                            "$ref": "#/allOf/0/allOf/0/properties/geometry/oneOf/1"
                           }
                         }
                       }
@@ -339,9 +337,8 @@
             "properties": {
               "oneOf": [
                 {
-                  "enum": [
-                      null
-                  ]
+                  "type": "object",
+                  "nullable": true
                 },
                 {
                   "allOf": [
@@ -465,14 +462,14 @@
                           "type": "array",
                           "description": "This list of languages in which this record is\navailable.",
                           "items": {
-                            "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/language"
+                            "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/language"
                           }
                         },
                         "resourceLanguages": {
                           "type": "array",
                           "description": "The list of languages in which the resource\ndescribed by this record is available.",
                           "items": {
-                            "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/language"
+                            "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/language"
                           }
                         },
                         "externalIds": {
@@ -561,7 +558,7 @@
                                 "description": "Graphic identifying a contact. The link relation should be `icon`\nand the media type should be an image media type.",
                                 "allOf": [
                                   {
-                                    "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/links/items"
+                                    "$ref": "#/allOf/0/allOf/0/properties/links/items"
                                   },
                                   {
                                     "type": "object",
@@ -595,7 +592,7 @@
                                     },
                                     "roles": {
                                       "description": "The type of phone number (e.g. home, work, fax, etc.).",
-                                      "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
+                                      "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
                                     }
                                   }
                                 }
@@ -616,7 +613,7 @@
                                     },
                                     "roles": {
                                       "description": "The type of email (e.g. home, work, etc.).",
-                                      "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
+                                      "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
                                     }
                                   }
                                 }
@@ -652,7 +649,7 @@
                                     },
                                     "roles": {
                                       "description": "The type of address (e.g. office, home, etc.).",
-                                      "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
+                                      "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/contacts/items/properties/roles"
                                     }
                                   }
                                 }
@@ -663,7 +660,7 @@
                                 "items": {
                                   "allOf": [
                                     {
-                                      "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/links/items"
+                                      "$ref": "#/allOf/0/allOf/0/properties/links/items"
                                     },
                                     {
                                       "type": "object",
@@ -773,7 +770,7 @@
               "items": {
                 "allOf": [
                   {
-                    "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/links/items/allOf/0"
+                    "$ref": "#/allOf/0/allOf/0/properties/links/items/allOf/0"
                   },
                   {
                     "type": "object",
@@ -845,10 +842,10 @@
                   ]
                 },
                 "title": {
-                  "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/title"
+                  "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/title"
                 },
                 "created": {
-                  "$ref": "#/definitions/ResourceRecordGeoJSON/allOf/0/properties/properties/oneOf/1/allOf/1/properties/created"
+                  "$ref": "#/allOf/0/allOf/0/properties/properties/oneOf/1/allOf/1/properties/created"
                 }
               },
               "required": [

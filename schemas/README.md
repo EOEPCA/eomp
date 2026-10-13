@@ -53,6 +53,24 @@ include automated workflow via GitHub Actions.
 
 ### Replace/fix null definitions:
 
+In the resulting JSON bundle files, Replace all instances of:
+
+```json
+{
+  "type": "object",
+  "nullable": true
+}
+```
+
+with:
+
+```json
+{
+    "enum": [
+      null
+    ]
+}
+```
 
 ## Validating an EOMP record
 
